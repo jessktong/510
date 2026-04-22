@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jessica â€” Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --emerald: #0d5c5c;
+            --emerald-dark: #094747;
+            --emerald-light: #147878;
+            --cream: #f5f0e8;
+            --cream-light: #faf7f2;
+            --cream-dark: #ebe5d9;
+            --copper: #c47d5f;
+            --copper-light: #d9a07d;
+            --text-dark: #2a2a2a;
+            --text-muted: #5a5a5a;
+            --shadow-soft: 0 4px 20px rgba(13, 92, 92, 0.08);
+            --shadow-hover: 0 8px 32px rgba(13, 92, 92, 0.14);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background-color: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        a {
+            color: var(--emerald);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--copper);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            background: linear-gradient(180deg, var(--cream-light) 0%, var(--cream) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--emerald) 0%, var(--copper) 50%, var(--emerald) 100%);
+        }
+
+        .hero-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--cream);
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 2.5rem;
+            background-color: var(--cream-dark);
+        }
+
+        .hero-name {
+            font-size: clamp(3rem, 10vw, 5.5rem);
+            color: var(--emerald);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+        }
+
+        .hero-visual {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-visual svg {
+            width: 36px;
+            height: 36px;
+            fill: var(--copper);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--emerald);
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--copper);
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--cream-light);
+        }
+
+        .about-content {
+            max-width: 720px;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* Projects Section */
+        .projects {
+            background-color: var(--cream);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .project-card {
+            background: var(--cream-light);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border: 1px solid var(--cream-dark);
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.25rem;
+            background-color: var(--cream-dark);
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            color: var(--emerald);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Publications Section */
+        .publications {
+            background-color: var(--cream-light);
+        }
+
+        .pub-list {
+            list-style: none;
+            max-width: 720px;
+        }
+
+        .pub-item {
+            display: flex;
+            align-items: baseline;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--cream-dark);
+            transition: var(--transition);
+        }
+
+        .pub-item:first-child {
+            border-top: 1px solid var(--cream-dark);
+        }
+
+        .pub-year {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--copper);
+            min-width: 60px;
+            letter-spacing: 0.05em;
+        }
+
+        .pub-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--emerald);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        .contact .section-title {
+            color: var(--cream);
+        }
+
+        .contact .section-title::after {
+            background: var(--copper);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .contact-link {
+            font-size: 1.1rem;
+            color: var(--cream);
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--copper);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--copper-light);
+        }
+
+        .contact-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--emerald-dark);
+            color: var(--cream-dark);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.85rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 700px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-avatar {
+                width: 110px;
+                height: 110px;
+            }
+
+            .hero-name {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .project-card {
+                padding: 1.5rem;
+            }
+
+            .pub-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <img src="linkedin headshot.jpeg" alt="Jessica" class="hero-avatar">
+        <h1 class="hero-name">Jessica</h1>
+        <p class="hero-tagline">Creative technologist crafting meaningful digital experiences</p>
+        <div class="hero-visual">
+            <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 0C8.059 0 0 8.059 0 18s8.059 18 18 18 18-8.059 18-18S27.941 0 18 0zm0 28c-5.523 0-10-4.477-10-10S12.477 8 18 8s10 4.477 10 10-4.477 10-10 10zm1-18h-2v8l7.25 4.35 1-1.7-6.25-3.7V10z"/>
+            </svg>
+        </div>
+    </header>
+
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">About</h2>
+            <div class="about-content">
+                <p class="about-text">
+                    I'm a creative technologist with a passion for building thoughtful digital products that balance beauty with functionality. My work lives at the intersection of design and engineering, where I can bring both analytical thinking and artistic sensibility to every project. When I'm not coding, you'll find me exploring newå’–å•¡é¦†, sketching ideas in my notebook, or diving into a good design book.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <img src="olive.jpg" alt="Project One" class="project-image">
+                    <h3 class="project-title">Project One</h3>
+                    <p class="project-description">A minimal meditation app designed for focus and calm, featuring customizable sessions and progress tracking.</p>
+                </article>
+                <article class="project-card">
+                    <img src="WIN_20230224_12_22_19_Pro.jpg" alt="Project Two" class="project-image">
+                    <h3 class="project-title">Project Two</h3>
+                    <p class="project-description">An interactive data visualization platform transforming complex datasets into beautiful, explorable stories.</p>
+                </article>
+                <article class="project-card">
+                    <img src="WIN_20230224_12_23_49_Pro.jpg" alt="Project Three" class="project-image">
+                    <h3 class="project-title">Project Three</h3>
+                    <p class="project-description">A creative toolkit for designers, featuring smart templates and collaborative workflows in the browser.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="publications">
+        <div class="container">
+            <h2 class="section-title">Publications</h2>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <span class="pub-year">2025</span>
+                    <span class="pub-title">The Future of Creative Tools â€” Design Quarterly</span>
+                </li>
+                <li class="pub-item">
+                    <span class="pub-year">2024</span>
+                    <span class="pub-title">Building for Accessibility: A Practical Guide â€” WebA11y Journal</span>
+                </li>
+                <li class="pub-item">
+                    <span class="pub-year">2023</span>
+                    <span class="pub-title">Minimalism in Digital Product Design â€” UX Collective</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-links">
+                <a href="mailto:jessica@example.com" class="contact-link">jessica@example.com</a>
+                <a href="https://github.com/jessica" target="_blank" rel="noopener" class="contact-link">github.com/jessica</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Â© 2026 Jessica. All rights reserved.</p>
+    </footer>
+</body>
+</html>
